@@ -8,18 +8,16 @@ import requests
 from rich import console, table, progress
 import pytz
 from pyfiglet import Figlet
+from dotenv import load_dotenv 
 
-'''
-conn = http.client.HTTPSConnection("v1.formula-1.api-sports.io")
+load_dotenv()
 
-'''
-
-api_key = 'c13e1dd3151559298a27890618f515d9'
-api_url = 'https://v1.formula-1.api-sports.io'
+api_key = os.getenv("API_KEY")
+api_url = os.getenv("API_URL")
 
 payload = {}
 headers = {
-    'x-rapidapi-key': 'c13e1dd3151559298a27890618f515d9',
+    'x-rapidapi-key': api_key,
     'x-rapidapi-host': 'v1.formula-1.api-sports.io'
 }
 
@@ -28,11 +26,10 @@ figlet = Figlet()
 figlet.setFont(font='speed')
 
 def clear_screen():
-    if os.name == 'nt':  # for Windows
+    if os.name == 'nt':  
         os.system('cls')
-    else:  # for macOS/Linux
+    else:  
         os.system('clear')
-
 
 
 def main():
